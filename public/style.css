@@ -1,19 +1,10 @@
 body{
-    /* background-color: rgb(75, 216, 183); */
-       background: linear-gradient(to bottom, #8587bc, #5596a8,#34da8f,#686768);
-    
-    /* Make sure it covers the full viewport */
+    background: linear-gradient(to bottom, #8587bc, #5596a8,#34da8f,#686768);
     min-height: 100vh;
-    margin: 0;
-
     margin: 0px;
     padding: 0px;
-}
-
-body {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
    align-items: center;
 }
 
