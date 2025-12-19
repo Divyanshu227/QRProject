@@ -22,6 +22,3 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
-QR/
-
-public/urls.csv
