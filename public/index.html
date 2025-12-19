@@ -1,28 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Create QR Code</title>
-  <style>
-    body { font-family: Arial; text-align: center; padding: 50px; }
-    input, button { padding: 10px; margin: 5px; }
-    #qrcode { margin-top: 20px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Generator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Create QR Code</h1>
-<div id="box">
-  <input type="text" id="url" placeholder="Enter URL" size="40">
-  <br>
-  <input type="text" id="name" placeholder="Enter QR name" size="40">
-  <br>
-  <button id="mb" onclick="createQR()">Create QR Code</button>
-</div>
-  <div id="qrcode" class="hidden"></div>
 
-  <script src="main.js"></script>
+  <div class="wrapper">
+    <div class="header">
+      <h1>QR Code Generator</h1>
+      <p>Create and preview QR codes instantly</p>
+    </div>
+
+    <div class="card">
+      <div class="field">
+        <label>Website URL</label>
+        <input type="text" placeholder="https://example.com" id="url">
+      </div>
+
+      <div class="field">
+        <label>QR Name</label>
+        <input type="text" placeholder="My Portfolio" id="name">
+      </div>
+
+      <button type="button" onclick="createQR()">Generate QR Code</button>
+
+      <div class="qr-preview" id="qrcode">
+        QR preview will appear here
+      </div>
+    </div>
+
+  </div>
+<script src="main.js"></script>
 </body>
-<footer>
-  @2025 Made by Divyanshu Kumar Jha
-</footer>
+
+    <footer>
+      © 2025 QR Code Generator · Built with JavaScript & Express
+    </footer>
 </html>

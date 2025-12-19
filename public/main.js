@@ -14,17 +14,17 @@
         const res = await fetch("/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url, name })
+          body: JSON.stringify({ url })
         });
-        const data = await res.json();
-
-        if (data.error) {
-          alert(data.error);
+        if (!res.ok) {
+          const err =await res.json();
+          alert(err.error || "Failed to generate QR");
           return;
         }
+        const blob = await res.blob();
 
         const img = document.createElement("img");
-        img.src = data.qrPath;
+        img.src = URL.createObjectURL(blob);
         img.alt = "QR Code";
         img.width = 200;
         img.height = 200;
@@ -36,7 +36,6 @@
         console.error(err);
         alert("Error generating QR code");
       }
-    
 
     }
 document.getElementById("url").addEventListener("keyup", function(event) {
