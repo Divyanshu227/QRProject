@@ -2,8 +2,8 @@
     async function createQR() {
       const url = document.getElementById("url").value.trim();
       const name = document.getElementById("name").value.trim();
-      const div = document.getElementById("qrcode");
-      div.innerHTML = "";
+      const preview = document.getElementById("qrcode");
+      preview.innerHTML = "";
 
       if (!url || !name) {
         alert("Please enter both URL and name!");
@@ -17,8 +17,7 @@
           body: JSON.stringify({ url })
         });
         if (!res.ok) {
-          const err =await res.json();
-          alert(err.error || "Failed to generate QR");
+          alert("Failed to generate QR");
           return;
         }
         const blob = await res.blob();
@@ -29,8 +28,14 @@
         img.width = 200;
         img.height = 200;
 
-        div.appendChild(img);
-        div.classList.remove("hidden");
+        preview.appendChild(img);
+        const d = document.createElement("a");
+        d.href = img.src;
+        d.download =`${name}.png`;
+        document.body.appendChild(d);
+        d.click();
+        document.body.removeChild(d);
+        setTimeout(() => URL.revokeObjectURL(img.src), 1000);
 
       } catch (err) {
         console.error(err);
